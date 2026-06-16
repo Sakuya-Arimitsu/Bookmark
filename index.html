@@ -4,362 +4,289 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>別府旅行しおり 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #F7F5F0;
+  color: #1A1A1A;
+  font-size: 14px;
+  line-height: 1.7;
+}
 
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: #F7F5F0;
-    color: #1A1A1A;
-    font-size: 14px;
-    line-height: 1.7;
-  }
+/* ── PAGE WRAPPER ── */
+.page {
+  width: 100%;
+  max-width: 700px;
+  margin: 16px auto;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  border-radius: 8px;
+  overflow: hidden;
+}
 
-  /* ── PRINT ── */
-  @media print {
-    body { background: #fff; }
-    .page { page-break-after: always; box-shadow: none; margin: 0; max-width: 100%; border-radius: 0; }
-    .page:last-child { page-break-after: avoid; }
-  }
+/* ── COVER ── */
+.cover {
+  background: #1A3A5C;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 60px 32px 100px;
+}
 
+.cover-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(200,151,58,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(42,123,140,0.12) 0%, transparent 50%);
+}
+
+.cover-wave {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 100px;
+  overflow: hidden;
+}
+.cover-wave svg { width: 100%; height: 100%; }
+
+.cover-content { position: relative; z-index: 1; text-align: center; }
+
+.cover-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #C8973A;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.cover-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(36px, 8vw, 52px);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.cover-subtitle {
+  font-size: clamp(14px, 3vw, 18px);
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+.cover-divider {
+  width: 48px; height: 2px;
+  background: #C8973A;
+  margin: 0 auto 32px;
+}
+
+.cover-meta { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+
+.cover-meta-item {
+  display: flex; align-items: center; gap: 10px;
+  color: rgba(255,255,255,0.80);
+  font-size: clamp(13px, 3vw, 15px);
+}
+
+.cover-meta-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(200,151,58,0.20);
+  border: 1px solid rgba(200,151,58,0.40);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0;
+}
+
+.cover-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.20);
+  border-radius: 20px;
+  padding: 6px 16px;
+  color: rgba(255,255,255,0.70);
+  font-size: clamp(11px, 2.5vw, 13px);
+  letter-spacing: 0.5px;
+  margin-top: 32px;
+}
+
+/* ── CONTENT PAGES ── */
+.page-header {
+  padding: 20px 24px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.page-header.navy { background: #1A3A5C; }
+.page-header.teal { background: #2A7B8C; }
+
+.page-header-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(16px, 4vw, 22px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.page-header-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.page-header-date {
+  font-size: clamp(11px, 2.5vw, 13px);
+  color: #C8973A;
+  letter-spacing: 0.5px;
+  text-align: right;
+  line-height: 1.6;
+}
+
+.page-body { padding: 24px 20px 32px; }
+
+/* ── DAY HEADER ── */
+.day-header {
+  display: flex; align-items: center;
+  gap: 12px; margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.day-number {
+  color: #fff;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.day-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(14px, 3.5vw, 18px);
+  font-weight: 600;
+}
+
+.day-route {
+  font-size: 11px; color: #999;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ── TIMELINE ── */
+.tl-item {
+  display: grid;
+  grid-template-columns: 52px 2px 1fr;
+  gap: 0 12px;
+}
+
+.tl-time {
+  text-align: right;
+  padding-top: 14px;
+  font-size: 11px; font-weight: 700;
+  color: #2A7B8C;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.tl-line-col { display: flex; flex-direction: column; align-items: center; }
+
+.tl-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #2A7B8C;
+  margin-top: 16px; flex-shrink: 0;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #2A7B8C;
+}
+.tl-dot.gold { background: #C8973A; box-shadow: 0 0 0 1px #C8973A; }
+
+.tl-connector { width: 2px; flex: 1; background: #EEF2F5; margin-top: 2px; }
+
+.tl-card {
+  padding: 10px 0 14px;
+  border-bottom: 1px solid #F3F0EC;
+}
+.tl-item:last-child .tl-card { border-bottom: none; }
+
+.tl-card-title {
+  font-size: clamp(13px, 3vw, 14px);
+  font-weight: 700; color: #1A1A1A;
+  margin-bottom: 3px;
+  display: flex; align-items: center;
+  gap: 6px; flex-wrap: wrap;
+  line-height: 1.4;
+}
+
+.tl-card-sub {
+  font-size: clamp(11px, 2.5vw, 12px);
+  color: #999; line-height: 1.6;
+}
+
+/* ── BADGES ── */
+.badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 10px;
+  letter-spacing: 0.3px; flex-shrink: 0;
+}
+.badge-navy { background: #E8EFF5; color: #1A3A5C; }
+.badge-teal { background: #E1F5EE; color: #0F6E56; }
+.badge-gold { background: #FBF5E9; color: #854F0B; }
+.badge-done { background: #EAF3DE; color: #3B6D11; }
+
+/* ── FOOTER ── */
+.page-footer {
+  padding: 12px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid #F0EDE8;
+}
+.footer-brand { font-size: 10px; color: #C8973A; letter-spacing: 2px; text-transform: uppercase; }
+.footer-page { font-size: 10px; color: #ccc; }
+
+/* ── PRINT ── */
+@media print {
+  @page { size: A4; margin: 10mm; }
+  body { background: #fff; font-size: 12px; }
   .page {
-    width: 210mm;
-    min-height: 297mm;
-    margin: 20px auto;
-    background: #fff;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
+    max-width: 100%;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    page-break-after: always;
   }
+  .page:last-child { page-break-after: avoid; }
+  .cover { min-height: auto; padding: 40px 24px 80px; }
+  .cover-title { font-size: 36px; }
+  .page-body { padding: 16px 16px 24px; }
+  .tl-card { padding: 8px 0 10px; }
+  .page-footer { padding: 8px 16px; }
+}
 
-  /* ── COVER ── */
-  .cover {
-    background: #1A3A5C;
-    min-height: 297mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 60px 40px;
-  }
-
-  .cover-pattern {
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 20%, rgba(200,151,58,0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(42,123,140,0.12) 0%, transparent 50%);
-  }
-
-  .cover-wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    overflow: hidden;
-  }
-
-  .cover-wave svg { width: 100%; height: 100%; }
-
-  .cover-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-  }
-
-  .cover-label {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: #C8973A;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    font-weight: 500;
-  }
-
-  .cover-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 48px;
-    font-weight: 600;
-    color: #fff;
-    line-height: 1.3;
-    margin-bottom: 8px;
-  }
-
-  .cover-subtitle {
-    font-size: 18px;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 48px;
-    letter-spacing: 1px;
-  }
-
-  .cover-divider {
-    width: 48px;
-    height: 2px;
-    background: #C8973A;
-    margin: 0 auto 40px;
-  }
-
-  .cover-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .cover-meta-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: rgba(255,255,255,0.80);
-    font-size: 14px;
-  }
-
-  .cover-meta-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(200,151,58,0.20);
-    border: 1px solid rgba(200,151,58,0.40);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-  }
-
-  .cover-bottom {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 1;
-  }
-
-  .cover-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.20);
-    border-radius: 20px;
-    padding: 6px 16px;
-    color: rgba(255,255,255,0.70);
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-
-  /* ── CONTENT PAGES ── */
-  .content-page {
-    padding: 0;
-    min-height: 297mm;
-  }
-
-  .page-header {
-    background: #1A3A5C;
-    padding: 24px 40px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  .page-header-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 22px;
-    color: #fff;
-    font-weight: 600;
-  }
-
-  .page-header-sub {
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .page-header-date {
-    font-size: 12px;
-    color: #C8973A;
-    letter-spacing: 1px;
-    text-align: right;
-  }
-
-  .page-body { padding: 32px 40px 40px; }
-
-  /* ── DAY HEADER ── */
-  .day-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
-  .day-number {
-    background: #1A3A5C;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    padding: 4px 12px;
-    border-radius: 2px;
-  }
-
-  .day-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 18px;
-    color: #1A3A5C;
-    font-weight: 600;
-  }
-
-  .day-route {
-    font-size: 12px;
-    color: #888;
-    margin-left: auto;
-  }
-
-  /* ── TIMELINE ── */
-  .timeline { position: relative; }
-
-  .tl-item {
-    display: grid;
-    grid-template-columns: 64px 2px 1fr;
-    gap: 0 16px;
-    margin-bottom: 0;
-  }
-
-  .tl-time {
-    text-align: right;
-    padding-top: 14px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #2A7B8C;
-    letter-spacing: 0.5px;
-  }
-
-  .tl-line-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .tl-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #2A7B8C;
-    margin-top: 16px;
-    flex-shrink: 0;
-    border: 2px solid #fff;
-    box-shadow: 0 0 0 1px #2A7B8C;
-  }
-
-  .tl-dot.gold { background: #C8973A; box-shadow: 0 0 0 1px #C8973A; }
-
-  .tl-connector {
-    width: 2px;
-    flex: 1;
-    background: #E8EFF2;
-    margin-top: 2px;
-  }
-
-  .tl-card {
-    padding: 12px 0 16px;
-    border-bottom: 1px solid #F0EDE8;
-  }
-
-  .tl-item:last-child .tl-card { border-bottom: none; }
-
-  .tl-card-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: #1A1A1A;
-    margin-bottom: 3px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .tl-card-sub {
-    font-size: 12px;
-    color: #888;
-    line-height: 1.5;
-  }
-
-  .badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 10px;
-    letter-spacing: 0.5px;
-  }
-
-  .badge-navy { background: #E8EFF5; color: #1A3A5C; }
-  .badge-teal { background: #E1F5EE; color: #0F6E56; }
-  .badge-gold { background: #FBF5E9; color: #854F0B; }
-  .badge-done { background: #EAF3DE; color: #3B6D11; }
-
-  /* ── SECTION DIVIDER ── */
-  .section-divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 28px 0 20px;
-  }
-
-  .section-divider-line {
-    flex: 1;
-    height: 1px;
-    background: #E8EFF2;
-  }
-
-  .section-divider-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: #aaa;
-    text-transform: uppercase;
-  }
-
-  /* ── FOOTER ── */
-  .page-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 14px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #F0EDE8;
-  }
-
-  .footer-brand {
-    font-size: 11px;
-    color: #C8973A;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .footer-page {
-    font-size: 11px;
-    color: #ccc;
-  }
+/* ── MOBILE ── */
+@media (max-width: 480px) {
+  body { background: #fff; }
+  .page { margin: 0; border-radius: 0; box-shadow: none; }
+  .cover { min-height: 100svh; padding: 48px 24px 90px; }
+  .page-body { padding: 20px 16px 28px; }
+  .page-header { padding: 16px 16px 14px; }
+  .day-route { display: none; }
+  .tl-item { grid-template-columns: 44px 2px 1fr; gap: 0 10px; }
+}
 </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════
-     PAGE 1 — COVER
-═════════════════════════════════════ -->
+<!-- PAGE 1 COVER -->
 <div class="page">
   <div class="cover">
     <div class="cover-pattern"></div>
-
     <div class="cover-content">
       <p class="cover-label">Travel Booklet</p>
       <h1 class="cover-title">別府旅行<br>しおり</h1>
@@ -383,248 +310,215 @@
           <span>別府 和み月　泊</span>
         </div>
       </div>
+      <div class="cover-tag">🌋 地獄めぐり　🥩 焼肉元相　🐬 うみたまご</div>
     </div>
-
     <div class="cover-wave">
-      <svg viewBox="0 0 794 120" preserveAspectRatio="none">
-        <path d="M0,60 C200,120 600,0 794,80 L794,120 L0,120 Z" fill="white"/>
+      <svg viewBox="0 0 794 100" preserveAspectRatio="none">
+        <path d="M0,50 C200,100 600,0 794,70 L794,100 L0,100 Z" fill="white"/>
       </svg>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════════════════════
-     PAGE 2 — DAY 1
-═════════════════════════════════════ -->
+<!-- PAGE 2 DAY 1 -->
 <div class="page">
-  <div class="content-page">
-    <div class="page-header">
-      <div>
-        <div class="page-header-sub">Schedule</div>
-        <div class="page-header-title">1日目のスケジュール</div>
-      </div>
-      <div class="page-header-date">
-        6月21日（土）<br>下関 → 別府
-      </div>
+  <div class="page-header navy">
+    <div>
+      <div class="page-header-sub">Schedule</div>
+      <div class="page-header-title">1日目のスケジュール</div>
     </div>
+    <div class="page-header-date">6月21日（土）<br>下関 → 別府</div>
+  </div>
+  <div class="page-body">
+    <div class="day-header">
+      <div class="day-number" style="background:#1A3A5C;">DAY 1</div>
+      <div class="day-title" style="color:#1A3A5C;">下関から別府へ</div>
+      <div class="day-route">約118km・高速1時間30分</div>
+    </div>
+    <div class="timeline">
 
-    <div class="page-body">
-      <div class="day-header">
-        <div class="day-number">DAY 1</div>
-        <div class="day-title">下関から別府へ</div>
-        <div class="day-route">約118km・高速1時間30分</div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🍱 宮の内茶寮で昼食 <span class="badge badge-done">予約済み</span></div>
+          <div class="tl-card-sub">下関・長府 ／ 懐石・会席料理 ／ 10名</div>
+        </div>
       </div>
 
-      <div class="timeline">
-
-        <div class="tl-item">
-          <div class="tl-time">12:00</div>
-          <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">
-              🍱 宮の内茶寮で昼食
-              <span class="badge badge-done">予約済み</span>
-            </div>
-            <div class="tl-card-sub">下関・長府 ／ 懐石・会席料理 ／ 10名</div>
-          </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🚗 下関（長府）出発 → 別府へ</div>
+          <div class="tl-card-sub">関門橋 → 九州自動車道 → 別府IC ／ ETC 約3,720円/台</div>
         </div>
-
-        <div class="tl-item">
-          <div class="tl-time">13:00</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🚗 下関（長府）出発 → 別府へ</div>
-            <div class="tl-card-sub">関門橋 → 九州自動車道 → 別府IC ／ ETC 約3,720円/台</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">15:00</div>
-          <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">
-              🏨 和み月　チェックイン
-              <span class="badge badge-navy">先にチェックイン</span>
-            </div>
-            <div class="tl-card-sub">荷物を置いてから観光へ。おじいちゃん・おばあちゃんはここで休憩もOK</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">15:30</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🚶 別府駅周辺　自由散策</div>
-            <div class="tl-card-sub">
-              油屋熊八像・手湯（無料）→ 別府タワー（¥800）<br>
-              → 竹瓦小路・昭和レトロな路地裏 → SELECT BEPPUでお土産
-            </div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">16:20</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">♨️ 竹瓦温泉</div>
-            <div class="tl-card-sub">普通浴 ¥300 ／ 昭和13年建築のシンボル温泉</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">17:00</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🏨 和み月　戻り・温泉タイム</div>
-            <div class="tl-card-sub">全室源泉かけ流し半露天風呂でゆっくり</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">夜</div>
-          <div class="tl-line-col"><div class="tl-dot gold"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🍽️ 和み月　懐石料理ディナー</div>
-            <div class="tl-card-sub">大分の旬の食材を使った会席。10名でゆっくり</div>
-          </div>
-        </div>
-
       </div>
-    </div>
 
-    <div class="page-footer">
-      <div class="footer-brand">Beppu 2025</div>
-      <div class="footer-page">1 / 2</div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🏨 和み月　チェックイン <span class="badge badge-navy">先にチェックイン</span></div>
+          <div class="tl-card-sub">荷物を置いてから観光へ。おじいちゃん・おばあちゃんはここで休憩もOK</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🚶 別府駅周辺　自由散策</div>
+          <div class="tl-card-sub">油屋熊八像・手湯（無料）→ 別府タワー（¥800）→ 竹瓦小路・昭和レトロな路地裏 → SELECT BEPPUでお土産</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">16:20</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">♨️ 竹瓦温泉</div>
+          <div class="tl-card-sub">普通浴 ¥300 ／ 昭和13年建築のシンボル温泉</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🏨 和み月　戻り・温泉タイム</div>
+          <div class="tl-card-sub">全室源泉かけ流し半露天風呂でゆっくり</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">夜</div>
+        <div class="tl-line-col"><div class="tl-dot gold"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🍽️ 和み月　懐石料理ディナー</div>
+          <div class="tl-card-sub">大分の旬の食材を使った会席。10名でゆっくり</div>
+        </div>
+      </div>
+
     </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-brand">Beppu 2025</div>
+    <div class="footer-page">1 / 2</div>
   </div>
 </div>
 
-<!-- ════════════════════════════════════
-     PAGE 3 — DAY 2
-═════════════════════════════════════ -->
+<!-- PAGE 3 DAY 2 -->
 <div class="page">
-  <div class="content-page">
-    <div class="page-header" style="background: #2A7B8C;">
-      <div>
-        <div class="page-header-sub">Schedule</div>
-        <div class="page-header-title">2日目のスケジュール</div>
-      </div>
-      <div class="page-header-date">
-        6月22日（日）<br>別府観光 → 帰路
-      </div>
+  <div class="page-header teal">
+    <div>
+      <div class="page-header-sub">Schedule</div>
+      <div class="page-header-title">2日目のスケジュール</div>
     </div>
+    <div class="page-header-date">6月22日（日）<br>別府観光 → 帰路</div>
+  </div>
+  <div class="page-body">
+    <div class="day-header">
+      <div class="day-number" style="background:#2A7B8C;">DAY 2</div>
+      <div class="day-title" style="color:#2A7B8C;">地獄めぐり・美食・海の仲間たち</div>
+    </div>
+    <div class="timeline">
 
-    <div class="page-body">
-      <div class="day-header">
-        <div class="day-number" style="background:#2A7B8C;">DAY 2</div>
-        <div class="day-title" style="color:#2A7B8C;">地獄めぐり・美食・海の仲間たち</div>
+      <div class="tl-item">
+        <div class="tl-time">8:00</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">☕ 和み月　朝食</div>
+          <div class="tl-card-sub">ゆっくり食べて出発準備</div>
+        </div>
       </div>
 
-      <div class="timeline">
-
-        <div class="tl-item">
-          <div class="tl-time">8:00</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">☕ 和み月　朝食</div>
-            <div class="tl-card-sub">ゆっくり食べて出発準備</div>
-          </div>
+      <div class="tl-item">
+        <div class="tl-time">9:15</div>
+        <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🔥 海地獄　到着・引換券を交換 <span class="badge badge-gold">要：引換券持参</span></div>
+          <div class="tl-card-sub">Enjoy! Kyushu の引換券 10枚を海地獄の窓口で共通観覧券に交換</div>
         </div>
-
-        <div class="tl-item">
-          <div class="tl-time">9:15</div>
-          <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">
-              🔥 海地獄　到着・引換券を交換
-              <span class="badge badge-gold">要：引換券持参</span>
-            </div>
-            <div class="tl-card-sub">Enjoy! Kyushu の引換券 10枚を海地獄の窓口で共通観覧券に交換</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">9:20</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🍮 地獄プリン（海地獄）</div>
-            <div class="tl-card-sub">180cc特大プリン ／ 地元産牛乳・卵・無添加 ／ 出来たてをその場で！</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">9:35</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🔥 地獄めぐり　鉄輪エリア 5か所（徒歩）</div>
-            <div class="tl-card-sub">海地獄 → 鬼石坊主地獄 → かまど地獄 → 鬼山地獄 → 白池地獄</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">11:45</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🚗 血の池エリアへ移動（約5分）</div>
-            <div class="tl-card-sub"></div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">11:50</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🔥 血の池地獄 → 龍巻地獄</div>
-            <div class="tl-card-sub">龍巻地獄は間欠泉が約30分ごと ／ 現地案内板でタイミングを確認</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">13:00</div>
-          <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🚗 焼肉元相 本店へ移動（約10分）</div>
-            <div class="tl-card-sub">血の池地獄から九州横断道路沿い ／ ほぼ通り道</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">13:30</div>
-          <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">
-              🥩 焼肉元相 本店　昼食
-              <span class="badge badge-teal">LO 14:30</span>
-            </div>
-            <div class="tl-card-sub">おおいた和牛・熟成肉・希少部位 ／ 個室12名まで対応 ／ 予約：050-5594-9388</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">15:15</div>
-          <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🐬 うみたまご（大分マリーンパレス水族館）</div>
-            <div class="tl-card-sub">セイウチ・イルカのショーを中心に約1時間45分 ／ 大人 ¥2,600</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">17:00</div>
-          <div class="tl-line-col"><div class="tl-dot"></div></div>
-          <div class="tl-card">
-            <div class="tl-card-title">🚗 別府出発 → 下関へ（約1時間30分）</div>
-            <div class="tl-card-sub">お疲れさまでした！安全運転でお帰りください</div>
-          </div>
-        </div>
-
       </div>
-    </div>
 
-    <div class="page-footer">
-      <div class="footer-brand">Beppu 2025</div>
-      <div class="footer-page">2 / 2</div>
+      <div class="tl-item">
+        <div class="tl-time">9:20</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🍮 地獄プリン（海地獄）</div>
+          <div class="tl-card-sub">180cc特大プリン ／ 地元産牛乳・卵・無添加 ／ 出来たてをその場で！</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">9:35</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🔥 地獄めぐり　鉄輪エリア 5か所（徒歩）</div>
+          <div class="tl-card-sub">海地獄 → 鬼石坊主地獄 → かまど地獄 → 鬼山地獄 → 白池地獄</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">11:45</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🚗 血の池エリアへ移動（約5分）</div>
+          <div class="tl-card-sub"></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">11:50</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🔥 血の池地獄 → 龍巻地獄</div>
+          <div class="tl-card-sub">龍巻地獄は間欠泉が約30分ごと ／ 現地案内板でタイミングを確認</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🚗 焼肉元相 本店へ移動（約10分）</div>
+          <div class="tl-card-sub">血の池地獄から九州横断道路沿い ／ ほぼ通り道</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🥩 焼肉元相 本店　昼食 <span class="badge badge-teal">LO 14:30</span></div>
+          <div class="tl-card-sub">おおいた和牛・熟成肉・希少部位 ／ 個室12名まで対応 ／ 📞 050-5594-9388</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">15:15</div>
+        <div class="tl-line-col"><div class="tl-dot gold"></div><div class="tl-connector"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🐬 うみたまご（大分マリーンパレス水族館）</div>
+          <div class="tl-card-sub">セイウチ・イルカのショーを中心に約1時間45分 ／ 大人 ¥2,600</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-line-col"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-card-title">🚗 別府出発 → 下関へ（約1時間30分）</div>
+          <div class="tl-card-sub">お疲れさまでした！安全運転でお帰りください 🙏</div>
+        </div>
+      </div>
+
     </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-brand">Beppu 2025</div>
+    <div class="footer-page">2 / 2</div>
   </div>
 </div>
 
